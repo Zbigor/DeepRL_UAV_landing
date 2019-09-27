@@ -1,0 +1,14 @@
+Header header
+float32 shaping_rew
+float32 cumulated_shaping_rew
+float32 flipping_rew
+float32 cumulated_flipping_rew
+float32 approach_angle_rew
+float32 cumulated_approach_angle_rew
+float32 exiting_boundaries_rew
+float32 exploration_rew
+float32 safe_landing_rew
+float32 approach_velocity_rew
+float32 early_stop_rew
+float32 goal_prox_bonus_rew
+

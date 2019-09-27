@@ -1,0 +1,9 @@
+ddpg: # namespace
+
+    env: 'HummingbirdLandBasic-v0' # task environment name
+    hid: 300
+    len: 1
+    gamma: 0.99
+    seed: 0
+    epochs: 100
+    

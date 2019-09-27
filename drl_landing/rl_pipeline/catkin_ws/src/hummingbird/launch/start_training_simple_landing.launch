@@ -1,0 +1,14 @@
+<launch>
+    <!-- This version uses the openai_ros environments -->
+    <rosparam command="load" file="$(find hummingbird)/config/hummingbird_land_basic_params.yaml" />
+    <rosparam command="load" file="$(find hummingbird)/config/ddpg_params.yaml" />
+    
+    <!-- Launch the training system -->
+    
+    
+    
+    <!--node pkg="hummingbird" name="hummingbird_land_basic_test" type="ddpg_stable_agent.py" output="screen"/-->
+    <!--node pkg="openai_ros" name="env1" type="hummingbird_land_basic.py" /-->
+    <!--node pkg="openai_ros" name="env2" type="hummingbird_land_basic_2.py" /-->
+    
+</launch>

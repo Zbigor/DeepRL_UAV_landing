@@ -1,0 +1,71 @@
+drone: #namespace
+
+    #qlearn parameters
+    alpha: 0.1
+    gamma: 0.7
+    epsilon: 0.9
+    epsilon_discount: 0.999
+    nepisodes: 500
+    nsteps: 1000
+    number_splits: 10 #set to change the number of state splits for the continuous problem and also the number of env_variable splits
+
+
+    n_actions: 5 # We have 5 action parameters - roll, pitch, yaw rate, thrust 
+    n_observations: 7 # We have 5 different observations -z,roll,pitch,yaw, C - as the contact sensor (discrete)
+
+    linear_forward_speed: 0.5 # Spwwed for ging fowards
+    angular_turn_speed: 0.05 # Lienare speed when turning
+    angular_speed: 0.3 # Angular speed when turning Left or Right
+    
+    init_linear_speed_vector:
+      x: 0.0
+      y: 0.0
+      z: 0.0
+    
+    init_angular_turn_speed: 0.0 # Initial angular speed in shich we start each episode
+    
+    
+    min_sonar_value: 0.5 # Minimum meters below wich we consider we have crashed
+    max_sonar_value: 5.0 # This can be retrieved form the sonar topic
+    
+    work_space: # 3D cube in which Drone is allowed to move
+      x_max: 6.0
+      x_min: -2.0
+      y_max: 4.0
+      y_min: -2.0
+      z_max: 10.0
+      z_min: -1.0
+    
+    max_roll: 3.14 # Max roll after which we end the episode
+    max_pitch: 3.14 # Max roll after which we end the episode
+    max_yaw_rate: 10.0 #  approx 2 pi rad/s, meaning that the fastest allowed full 360 degree turn can be done in  second
+    max_thrust: 7.5 # 0-15[N], allowing altitude velocities approximately up to 5 m/s   
+    
+    desired_pose:
+      x: 4.0
+      y: 2.0
+      z: 0.065
+    
+    desired_point_epsilon: 0.1 # Error acceptable to consider that it has reached the desired point
+    
+    closer_to_point_reward: 50 # We give points for getting closer to the desired point
+    not_ending_point_reward: 2 # Points given if we just dont crash
+    safe_landing_points: 70 # Points given when ending an episode
+    exited_bounding_box: -3000.0 # reward factor if the drone ends up outside of the defined bounding box
+    early_engine_cutoff: -50 # reward factor if the engines are cut off at a high altitude
+    position_shaping_factor: 100 # position shaping factor, rewarding the minimization of altitude (z)
+    control_actions_shaping_factor: 1 # control actions shaping factor, rewarding the "minimal" control signal values
+    exponent_factor_safe_engine_cutoff: 1.55 # factor in the exponent term of the safe_cutoff reward
+    max_thrust_cutoff_altitude: 0.25 # touchdown is for z = 0.06
+    desired_thrust_cutoff_altitude: 0.2 # touchdown is for z = 0.06
+    safe_landing_bonus_factor: 0.01 # safe landing bonus factor that mutiplies the amount of steps remaining until step limit
+    
+    max_landing_pitch: 0.2 # maximum pitch allowed for the landing to be considered safe 0.26 rad -> 15 deg
+    max_landing_roll: 0.2 # maximum roll allowed for the landing to be considered safe 0.26 rad -> 15 deg
+    
+    fast_landing_bonus_factor: 0.02    
+    
+    vertical_landing_reward: 10 # rewarding small roll and pitch at the point of contact
+    
+    
+    

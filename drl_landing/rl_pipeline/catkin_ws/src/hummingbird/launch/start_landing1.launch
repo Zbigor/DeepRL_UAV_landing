@@ -1,0 +1,15 @@
+<launch>
+    <!-- This version uses the openai_ros environments -->
+    <rosparam command="load" file="$(find hummingbird)/config/hummingbird_land_basic_params.yaml" />
+    <rosparam command="load" file="$(find hummingbird)/config/ddpg_params.yaml" />
+    
+    <!-- Launch the training system -->
+    
+    
+    
+    <node pkg="hummingbird" name="param_server" type="param_server_node.py"/>
+
+    <!--node pkg="openai_ros" name="r_env1" type="robot_gazebo_env.py" /-->
+    <!--node pkg="openai_ros" name="h_env1" type="hummingbird_env.py" /-->
+    
+</launch>

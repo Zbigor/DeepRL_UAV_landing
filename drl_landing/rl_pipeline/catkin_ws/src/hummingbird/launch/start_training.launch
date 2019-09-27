@@ -1,0 +1,6 @@
+<launch>
+    <!-- This version uses the openai_ros environments -->
+    <rosparam command="load" file="$(find hummingbird)/config/hummingbird_openai_test1_params.yaml" />
+    <!-- Launch the training system -->
+    <node pkg="hummingbird" name="hummingbird_test1_test" type="start_testing.py" output="screen"/>
+</launch>
